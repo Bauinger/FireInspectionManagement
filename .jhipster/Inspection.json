@@ -1,0 +1,62 @@
+{
+  "name": "Inspection",
+  "fields": [
+    {
+      "fieldName": "inspectionNr",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "inspectionStatus",
+      "fieldType": "InspectionStatus",
+      "fieldValues": "OPEN,DONE,POSTPONED"
+    },
+    {
+      "fieldName": "startDateTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDateTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hasTenantRefused",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "inspection",
+      "relationshipName": "tenant",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "inspection",
+      "relationshipName": "appraiser",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "defect",
+      "otherEntityRelationshipName": "inspection",
+      "relationshipName": "defects"
+    }
+  ],
+  "entityTableName": "inspection",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220105160702"
+}

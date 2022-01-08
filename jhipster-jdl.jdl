@@ -1,0 +1,57 @@
+
+entity Address {
+    street String,
+    streetNumber Integer,
+    district String,
+    village String,
+    postalCode String,
+}
+
+entity Customer {
+    firstName String,
+    lastName String,
+    email String,
+    telephoneNumber String
+}
+
+entity Inspection {
+	inspectionNr UUID,
+	inspectionStatus InspectionStatus,
+	startDateTime Instant,
+    endDateTime Instant,
+    note String,
+    hasTenantRefused Boolean,
+}
+
+entity Defect {
+	defectNr UUID,
+	deadline LocalDate,
+    done Boolean,
+    imminentDanger Boolean,
+    title String,
+    description String,
+    suggestions String
+}
+
+enum InspectionStatus {
+    OPEN,
+    DONE,
+    POSTPONED
+}
+
+relationship OneToOne {
+	Customer{address} to Address
+}
+
+relationship OneToOne {
+	Inspection{tenant} to Customer
+}
+
+relationship OneToOne {
+	Inspection{appraiser} to User
+}
+
+relationship OneToMany {
+	Inspection{defects} to Defect
+}
+

@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customer">
+      <h2 data-cy="customerDetailsHeading"><span jhiTranslate="fireApp.customer.detail.title">Customer</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customer.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.customer.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ customer.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.customer.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ customer.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.customer.email">Email</span></dt>
+        <dd>
+          <span>{{ customer.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.customer.telephoneNumber">Telephone Number</span></dt>
+        <dd>
+          <span>{{ customer.telephoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.customer.address">Address</span></dt>
+        <dd>
+          <div *ngIf="customer.address">
+            <a [routerLink]="['/address', customer.address?.id, 'view']">{{ customer.address?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customer', customer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="defect">
+      <h2 data-cy="defectDetailsHeading"><span jhiTranslate="fireApp.defect.detail.title">Defect</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ defect.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.defectNr">Defect Nr</span></dt>
+        <dd>
+          <span>{{ defect.defectNr }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.deadline">Deadline</span></dt>
+        <dd>
+          <span>{{ defect.deadline | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.done">Done</span></dt>
+        <dd>
+          <span>{{ defect.done }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.imminentDanger">Imminent Danger</span></dt>
+        <dd>
+          <span>{{ defect.imminentDanger }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.title">Title</span></dt>
+        <dd>
+          <span>{{ defect.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.description">Description</span></dt>
+        <dd>
+          <span>{{ defect.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.suggestions">Suggestions</span></dt>
+        <dd>
+          <span>{{ defect.suggestions }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.defect.inspection">Inspection</span></dt>
+        <dd>
+          <div *ngIf="defect.inspection">
+            <a [routerLink]="['/inspection', defect.inspection?.id, 'view']">{{ defect.inspection?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/defect', defect.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

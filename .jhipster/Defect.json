@@ -1,0 +1,51 @@
+{
+  "name": "Defect",
+  "fields": [
+    {
+      "fieldName": "defectNr",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "deadline",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "done",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "imminentDanger",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "suggestions",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "inspection",
+      "otherEntityRelationshipName": "defects",
+      "relationshipName": "inspection"
+    }
+  ],
+  "entityTableName": "defect",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220105160703"
+}

@@ -42,6 +42,8 @@
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "languages": ["de", "en"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Address", "Customer", "Inspection", "Defect"],
+    "lastLiquibaseTimestamp": 1641398823000
   }
 }

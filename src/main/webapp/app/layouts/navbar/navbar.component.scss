@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/functions';
-@import '~bootswatch/dist/zephyr/variables';
+@import '~bootswatch/dist/cosmo/variables';
 @import '~bootstrap/scss/variables';
 
 /* ==========================================================================
@@ -45,10 +45,10 @@ Navbar
 Logo styles
 ========================================================================== */
 .logo-img {
-  height: 45px;
-  width: 45px;
+  width: 10vw;
+  height: 10vh;
   display: inline-block;
   vertical-align: middle;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background: url('../../../content/images/logo1.png') no-repeat center center;
   background-size: contain;
 }

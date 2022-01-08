@@ -1,0 +1,32 @@
+{
+  "fireApp": {
+    "inspection": {
+      "home": {
+        "title": "Inspections",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Inspection",
+        "createOrEditLabel": "Create or edit a Inspection",
+        "notFound": "No Inspections found"
+      },
+      "created": "A new Inspection is created with identifier {{ param }}",
+      "updated": "A Inspection is updated with identifier {{ param }}",
+      "deleted": "A Inspection is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Inspection {{ id }}?"
+      },
+      "detail": {
+        "title": "Inspection"
+      },
+      "id": "ID",
+      "inspectionNr": "Inspection Nr",
+      "inspectionStatus": "Inspection Status",
+      "startDateTime": "Start Date Time",
+      "endDateTime": "End Date Time",
+      "note": "Note",
+      "hasTenantRefused": "Has Tenant Refused",
+      "tenant": "Tenant",
+      "appraiser": "Appraiser",
+      "defects": "Defects"
+    }
+  }
+}

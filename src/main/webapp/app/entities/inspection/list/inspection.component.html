@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="InspectionHeading">
+    <span jhiTranslate="fireApp.inspection.home.title">Inspections</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="fireApp.inspection.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-inspection"
+        [routerLink]="['/inspection/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="fireApp.inspection.home.createLabel">Create a new Inspection</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="inspections?.length === 0">
+    <span jhiTranslate="fireApp.inspection.home.notFound">No inspections found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="inspections && inspections.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.inspectionNr">Inspection Nr</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.inspectionStatus">Inspection Status</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.startDateTime">Start Date Time</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.endDateTime">End Date Time</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.note">Note</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.hasTenantRefused">Has Tenant Refused</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.tenant">Tenant</span></th>
+          <th scope="col"><span jhiTranslate="fireApp.inspection.appraiser">Appraiser</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inspection of inspections; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/inspection', inspection.id, 'view']">{{ inspection.id }}</a>
+          </td>
+          <td>{{ inspection.inspectionNr }}</td>
+          <td jhiTranslate="{{ 'fireApp.InspectionStatus.' + inspection.inspectionStatus }}">{{ inspection.inspectionStatus }}</td>
+          <td>{{ inspection.startDateTime | formatMediumDatetime }}</td>
+          <td>{{ inspection.endDateTime | formatMediumDatetime }}</td>
+          <td>{{ inspection.note }}</td>
+          <td>{{ inspection.hasTenantRefused }}</td>
+          <td>
+            <div *ngIf="inspection.tenant">
+              <a [routerLink]="['/customer', inspection.tenant?.id, 'view']">{{ inspection.tenant?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ inspection.appraiser?.id }}
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/inspection', inspection.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/inspection', inspection.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(inspection)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

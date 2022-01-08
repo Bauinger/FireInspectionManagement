@@ -1,0 +1,32 @@
+{
+  "fireApp": {
+    "inspection": {
+      "home": {
+        "title": "Inspections",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Inspection erstellen",
+        "createOrEditLabel": "Inspection erstellen oder bearbeiten",
+        "notFound": "Keine Inspections gefunden"
+      },
+      "created": "Inspection erstellt mit ID {{ param }}",
+      "updated": "Inspection aktualisiert mit ID {{ param }}",
+      "deleted": "Inspection gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Inspection {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Inspection"
+      },
+      "id": "ID",
+      "inspectionNr": "Inspection Nr",
+      "inspectionStatus": "Inspection Status",
+      "startDateTime": "Start Date Time",
+      "endDateTime": "End Date Time",
+      "note": "Note",
+      "hasTenantRefused": "Has Tenant Refused",
+      "tenant": "Tenant",
+      "appraiser": "Appraiser",
+      "defects": "Defects"
+    }
+  }
+}

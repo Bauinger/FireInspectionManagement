@@ -7,6 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "address": "Address",
+        "customer": "Customer",
+        "inspection": "Inspection",
+        "defect": "Defect",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -137,5 +141,12 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "This is your footer"
+  "footer": "FIMS - Fire Inspection Management Service",
+  "next": "Next",
+  "previous": "Previous",
+  "today": "Today",
+  "month": "Month",
+  "week": "Week",
+  "day": "Day",
+  "new_inspection": "Create new inspection"
 }

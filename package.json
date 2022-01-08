@@ -71,6 +71,7 @@
     "packaging": "jar"
   },
   "dependencies": {
+    "@angular/animations": "^12.2.15",
     "@angular/common": "12.2.5",
     "@angular/compiler": "12.2.5",
     "@angular/core": "12.2.5",
@@ -85,14 +86,17 @@
     "@ng-bootstrap/ng-bootstrap": "10.0.0",
     "@ngx-translate/core": "13.0.0",
     "@ngx-translate/http-loader": "6.0.0",
+    "angular-calendar": "^0.29.0",
     "bootstrap": "4.6.0",
     "bootswatch": "4.6.0",
     "dayjs": "1.10.7",
+    "moment": "^2.29.1",
     "ngx-infinite-scroll": "10.0.1",
     "ngx-webstorage": "8.0.0",
     "rxjs": "6.6.7",
     "swagger-ui-dist": "3.52.2",
     "tslib": "2.3.1",
+    "uuid": "^8.3.2",
     "zone.js": "0.11.4"
   },
   "devDependencies": {
@@ -105,6 +109,7 @@
     "@angular/service-worker": "12.2.5",
     "@types/jest": "27.0.1",
     "@types/node": "16.9.1",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
     "browser-sync": "2.27.5",

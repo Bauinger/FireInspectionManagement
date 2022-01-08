@@ -1,0 +1,31 @@
+{
+  "fireApp": {
+    "defect": {
+      "home": {
+        "title": "Defects",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Defect",
+        "createOrEditLabel": "Create or edit a Defect",
+        "notFound": "No Defects found"
+      },
+      "created": "A new Defect is created with identifier {{ param }}",
+      "updated": "A Defect is updated with identifier {{ param }}",
+      "deleted": "A Defect is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Defect {{ id }}?"
+      },
+      "detail": {
+        "title": "Defect"
+      },
+      "id": "ID",
+      "defectNr": "Defect Nr",
+      "deadline": "Deadline",
+      "done": "Done",
+      "imminentDanger": "Imminent Danger",
+      "title": "Title",
+      "description": "Description",
+      "suggestions": "Suggestions",
+      "inspection": "Inspection"
+    }
+  }
+}

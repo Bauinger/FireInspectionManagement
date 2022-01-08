@@ -1,0 +1,119 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-defect-heading" data-cy="DefectCreateUpdateHeading" jhiTranslate="fireApp.defect.home.createOrEditLabel">
+        Create or edit a Defect
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.defectNr" for="field_defectNr">Defect Nr</label>
+          <input type="text" class="form-control" name="defectNr" id="field_defectNr" data-cy="defectNr" formControlName="defectNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.deadline" for="field_deadline">Deadline</label>
+          <div class="input-group">
+            <input
+              id="field_deadline"
+              data-cy="deadline"
+              type="text"
+              class="form-control"
+              name="deadline"
+              ngbDatepicker
+              #deadlineDp="ngbDatepicker"
+              formControlName="deadline"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="deadlineDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.done" for="field_done">Done</label>
+          <input type="checkbox" class="form-check" name="done" id="field_done" data-cy="done" formControlName="done" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.imminentDanger" for="field_imminentDanger">Imminent Danger</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="imminentDanger"
+            id="field_imminentDanger"
+            data-cy="imminentDanger"
+            formControlName="imminentDanger"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.suggestions" for="field_suggestions">Suggestions</label>
+          <input
+            type="text"
+            class="form-control"
+            name="suggestions"
+            id="field_suggestions"
+            data-cy="suggestions"
+            formControlName="suggestions"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.defect.inspection" for="field_inspection">Inspection</label>
+          <select class="form-control" id="field_inspection" data-cy="inspection" name="inspection" formControlName="inspection">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                inspectionOption.id === editForm.get('inspection')!.value?.id ? editForm.get('inspection')!.value : inspectionOption
+              "
+              *ngFor="let inspectionOption of inspectionsSharedCollection; trackBy: trackInspectionById"
+            >
+              {{ inspectionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

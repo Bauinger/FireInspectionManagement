@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="address">
+      <h2 data-cy="addressDetailsHeading"><span jhiTranslate="fireApp.address.detail.title">Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ address.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.address.street">Street</span></dt>
+        <dd>
+          <span>{{ address.street }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.address.streetNumber">Street Number</span></dt>
+        <dd>
+          <span>{{ address.streetNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.address.district">District</span></dt>
+        <dd>
+          <span>{{ address.district }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.address.village">Village</span></dt>
+        <dd>
+          <span>{{ address.village }}</span>
+        </dd>
+        <dt><span jhiTranslate="fireApp.address.postalCode">Postal Code</span></dt>
+        <dd>
+          <span>{{ address.postalCode }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address', address.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

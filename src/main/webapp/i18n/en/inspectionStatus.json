@@ -1,0 +1,10 @@
+{
+  "fireApp": {
+    "InspectionStatus": {
+      "null": "",
+      "OPEN": "OPEN",
+      "DONE": "DONE",
+      "POSTPONED": "POSTPONED"
+    }
+  }
+}

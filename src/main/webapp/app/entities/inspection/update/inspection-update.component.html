@@ -1,0 +1,141 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-inspection-heading" data-cy="InspectionCreateUpdateHeading" jhiTranslate="fireApp.inspection.home.createOrEditLabel">
+        Create or edit a Inspection
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.inspectionNr" for="field_inspectionNr">Inspection Nr</label>
+          <input
+            type="text"
+            class="form-control"
+            name="inspectionNr"
+            id="field_inspectionNr"
+            data-cy="inspectionNr"
+            formControlName="inspectionNr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.inspectionStatus" for="field_inspectionStatus"
+            >Inspection Status</label
+          >
+          <select
+            class="form-control"
+            name="inspectionStatus"
+            formControlName="inspectionStatus"
+            id="field_inspectionStatus"
+            data-cy="inspectionStatus"
+          >
+            <option [ngValue]="null">{{ 'fireApp.InspectionStatus.null' | translate }}</option>
+            <option value="OPEN">{{ 'fireApp.InspectionStatus.OPEN' | translate }}</option>
+            <option value="DONE">{{ 'fireApp.InspectionStatus.DONE' | translate }}</option>
+            <option value="POSTPONED">{{ 'fireApp.InspectionStatus.POSTPONED' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.startDateTime" for="field_startDateTime"
+            >Start Date Time</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_startDateTime"
+              data-cy="startDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="startDateTime"
+              formControlName="startDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.endDateTime" for="field_endDateTime">End Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_endDateTime"
+              data-cy="endDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="endDateTime"
+              formControlName="endDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.note" for="field_note">Note</label>
+          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.hasTenantRefused" for="field_hasTenantRefused"
+            >Has Tenant Refused</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="hasTenantRefused"
+            id="field_hasTenantRefused"
+            data-cy="hasTenantRefused"
+            formControlName="hasTenantRefused"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.tenant" for="field_tenant">Tenant</label>
+          <select class="form-control" id="field_tenant" data-cy="tenant" name="tenant" formControlName="tenant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="customerOption.id === editForm.get('tenant')!.value?.id ? editForm.get('tenant')!.value : customerOption"
+              *ngFor="let customerOption of tenantsCollection; trackBy: trackCustomerById"
+            >
+              {{ customerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="fireApp.inspection.appraiser" for="field_appraiser">Appraiser</label>
+          <select class="form-control" id="field_appraiser" data-cy="appraiser" name="appraiser" formControlName="appraiser">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('appraiser')!.value?.id ? editForm.get('appraiser')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
