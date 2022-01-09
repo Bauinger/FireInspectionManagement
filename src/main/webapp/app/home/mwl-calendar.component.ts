@@ -193,6 +193,7 @@ export class MwlCalendarComponent implements OnInit {
     } else if (this.inspection?.inspectionStatus === InspectionStatus.DONE) {
       this.badageColor = 'badge rounded-pill bg-success';
     }
+    this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   setView(view: CalendarView): void {
@@ -208,6 +209,10 @@ export class MwlCalendarComponent implements OnInit {
       this.subscribeToSaveResponse(this.inspectionService.create(inspection));
     }
     this.loadInspections();
+    close();
+  }
+
+  previousState(): void {
     close();
   }
 
@@ -311,12 +316,6 @@ export class MwlCalendarComponent implements OnInit {
 
   protected onSaveFinalize(): void {
     this.isSaving = false;
-  }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  protected previousState(): void {
-    close();
-    // window.history.back();
   }
 
   protected updateForm(inspection: IInspection): void {

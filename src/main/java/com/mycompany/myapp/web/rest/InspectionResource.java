@@ -1,6 +1,8 @@
 package com.mycompany.myapp.web.rest;
 
+import com.mycompany.myapp.domain.Defect;
 import com.mycompany.myapp.domain.Inspection;
+import com.mycompany.myapp.repository.DefectRepository;
 import com.mycompany.myapp.repository.InspectionRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -32,8 +34,11 @@ public class InspectionResource {
 
     private final InspectionRepository inspectionRepository;
 
-    public InspectionResource(InspectionRepository inspectionRepository) {
+    private final DefectRepository defectRepository;
+
+    public InspectionResource(InspectionRepository inspectionRepository, DefectRepository defectRepository) {
         this.inspectionRepository = inspectionRepository;
+        this.defectRepository = defectRepository;
     }
 
     /**
@@ -158,7 +163,16 @@ public class InspectionResource {
     @GetMapping("/inspections")
     public List<Inspection> getAllInspections() {
         log.debug("REST request to get all Inspections");
-        return inspectionRepository.findAll();
+        List<Defect> defects = defectRepository.findAll();
+        List<Inspection> inspections = inspectionRepository.findAll();
+        defects.forEach(x -> {
+            inspections.forEach(y -> {
+                if (Objects.equals(x.getInspection().getId(), y.getId())) {
+                    y.addDefects(x);
+                }
+            });
+        });
+        return inspections;
     }
 
     /**
